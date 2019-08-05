@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WordMemo >> Descriptions</title>
+    <script src="wordlist.js" type="text/javascript" charset="utf-8"></script>
+    <script src="wordmemo.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="all">
+        html{
+            background-color: #fffaff;
+        }
+        .lipar{
+            float: left;
+            list-style: none;
+            width: 45%;
+            border-bottom: 1px;
+            border-style: solid;
+            border-color: #000000;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            margin-top: 2px;
+            padding-bottom: 2px;
+            font-size: 22.5px;
+            font-weight: 200;
+        }
+        .lipart{
+            float: left;
+            list-style: none;
+            width: 45%;
+            border-bottom: 1.5px;
+            border-style: solid;
+            border-color: #000000;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            font-size: 20px;
+            margin-top: 2px;
+        }
+        ul{
+            list-style: none;
+        }
+        .wsets{
+            margin-top: 2px;
+            list-style: none;
+        }
+        .ul-des{
+            margin-top: 0px;
+        }
+        body{
+            margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="ul-des">
+        <li class="wsets">
+            <ul>
+                <li class="lipart">word<span id="spw" style="font-weight: 100;"></span></li>
+                <li class="lipart">description</li>
+            </ul>
+        </li>
+    </ul>
+    <ul id="wordlist">
+        <script type="text/javascript" charset="utf-8">
+            document.write("<br>");
+            var lst = localStorage;
+            var sst = sessionStorage;
+            var blstlen = 0;
+            var sstlen = 0;
+            var wordct = 0;
+            if (sst.length !== 0){
+                for (i=0;i<sst.length;i++){
+                    document.write('<li class="wsets"><ul><li class="lipar">' + sst.getItem("src") + '</li><li class="lipar">' + lst.getItem(sst.getItem("src")) + '</li></ul></li>');
+                    wordct ++;
+                    if (lst.getItem(sst.getItem("src")) === null){
+                        wordct --;
+                    }
+                }
+            }else{
+                for (i=0;i<lst.length;i++){
+                    var key = lst.key(i);
+                    var val = lst.getItem(key);
+                    if (key[0] !== "#"){
+                        document.write('<li class="wsets"><ul><li class="lipar">' + lst.key(i) + '</li><li class="lipar">' + lst.getItem(lst.key(i)) + '</li></ul></li>');
+                        // document.getElementById('wordlist').innerHTML = '<li class="wsets"><ul><li class="lipar">' + lst.key(i) + '</li><li class="lipar">' + lst.getItem(lst.key(i)) + '</li></ul></li>';
+                        wordct ++;
+                    }
+                }
+            }
+            document.getElementById('spw').innerHTML = " (" + wordct + "words)";
+        </script>
+    </ul>
+    
+</body>
+</html>
