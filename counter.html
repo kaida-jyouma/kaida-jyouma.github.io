@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>かうんたー</title>
+    <style type="text/css" media="all">
+        nav{
+            text-align: center;
+        }
+        nav ul{
+            margin: 0 ;
+            padding: 0 ;
+        }
+        nav ul li{
+            list-style: none;
+            display: inline-block;
+            width: 15%;
+            min-width: 90px;
+            text-align: center;
+        }
+        nav ul li a{
+            text-decoration: none;
+            color: #333;
+        }
+        nav ul li.current a{
+            color: #F33135;
+        }
+        nav ul li a:hover{
+            color: #E7DA66;
+        }
+    </style>
+    <style type="text/css" media="all">
+        .body {
+            text-align: center;
+            background-color: #f1f4fb;
+        }
+        .h1-title {
+            font-size: 38px;
+            text-align: center;
+            font-family: Arial;
+            margin-bottom: 0px;
+        }
+        .div-cnum {
+            text-align: center;
+        }
+        .h1-cnum {
+            font-size: 35px;
+            text-align: center;
+            background-color: #f1f4fb;
+            border: 0px;
+            border-style: none;
+            margin-top: 18px;
+            margin-bottom: 18px;
+        }
+        .reset {
+            width: 80px;
+            text-align: center;
+            margin-top: 0px;
+            margin-bottom: 12px;
+        }
+        .div-cont {
+            text-align: center;
+            margin: 10px;
+            padding: 0px;
+        }
+        .incont {
+            height: 19px;
+            font-size: 15px;
+        }
+        .p-msg {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .bt-lss {
+            width: 320px;
+            text-align: center;
+            margin-right: 10px;
+            margin-left: 10px;
+            margin-bottom: 8px;
+            }
+        .bt-lsr {
+            width: 320px;
+            text-align: center;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        .div-btls{
+            text-align: center;
+        }
+        .h5-subtitle {
+            text-align: center;
+            font-size: 25px;
+            margin-top: 0px;
+            padding-top: 0px;
+            border: none;
+            margin-bottom: 5px;
+        }
+        .p-timeJ {
+            font-size: 30px;
+            margin-top: 0px;
+            margin-bottom: 5px;
+            text-align: center;
+            font-weight: 100;
+            font-style: none;
+        }
+        .p-timeU {
+            font-size: 25px;
+            margin-top: 0px;
+            text-align: center;
+            font-weight: 100;
+            font-style: none;
+            margin-bottom: 0px;
+        }
+        .cpr {
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+        .bt-lsscl {
+            width: 65px;
+            text-align: center;
+            margin-right: 10px;
+            margin-left: 10px;
+            margin-bottom: 0px;
+        }
+        .div-btlsu {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 0px;
+            margin-top: 6px;
+            padding-top: 0px;
+        }
+    </style>
+    <!--カウンター制御スクリプト-->
+    <script src="counter.js" type="text/javascript" charset="utf-8"></script>
+    <!--script type="text/javascript" charset="utf-8">
+        var count = 0;
+        var st = localStorage;
+        function resetClear() {
+            count = 0;
+            document.getElementById('c-num').innerHTML = count;
+            document.getElementById('continue').value = "";
+        }
+        function increase() {
+            count ++;
+            document.getElementById('c-num').innerHTML = count;
+            st.setItem("auto", count);
+        }
+        function decrease() {
+            if (count - 1 < 0) {
+                count = 0;
+                document.getElementById('c-num').innerHTML = count;
+                st.setItem("auto", count);
+            } else {
+                count = count - 1;
+                document.getElementById('c-num').innerHTML = count;
+                st.setItem("auto", count);
+            }
+        }
+        function set() {
+            var inputNum = document.getElementById('continue').value;
+            var intInputNum = parseInt(inputNum);
+            if (intInputNum >= 0) {
+                count = intInputNum;
+                document.getElementById('c-num').innerHTML = inputNum;
+                st.setItem("auto", count);
+                document.getElementById('continue').value = "";
+            } else if (inputNum === "orenai2019") {
+                return true;
+            } else {
+                window.alert("You cannot enter number under zero...");
+                document.getElementById('continue').value = "";
+            }
+        }
+        function save() {
+            var st = localStorage;
+            var keyVal = "manual";
+            var valVal = count;
+            // var timeVal = new Date();
+            // var valList = new Array();
+            // valList.push(timeVal, valVal)
+            st.setItem(keyVal, valVal);
+        }
+        function read(x) {
+            var st = localStorage;
+            var lsItem = st.getItem(x);
+            if (lsItem === null){
+                lsItem = 0;
+            }
+            count = lsItem;
+            document.getElementById('c-num').innerHTML = lsItem;
+        }
+        function readtime(){
+            var dt=new Date();
+            var year = dt.getFullYear();
+            var month = dt.getMonth() + 1;
+            var week = dt.getDay();
+            var day = dt.getDate();
+        }
+        function updateClock() {
+            var now = new Date();
+            var hour = now.getHours();
+            var uhour = now.getHours();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+            var year = now.getFullYear();
+            var uyear = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var umonth = now.getMonth() + 1;
+            var day = now.getDate();
+            var uday = now.getDate();
+            var jpnyear = year - 2018;
+            var oldget = document.getElementById("continue").value;
+            if ( hour < 10 ) hour = "0" + hour;
+            if ((uhour - 9) <= 0){
+                uhour = uhour + 24 - 9;
+                if ((uday - 1) <= 0){
+                    if ((umonth - 1) <= 0){
+                        uyear = uyear - 1;
+                    } else {
+                        umonth = umonth - 1;
+                    }
+                } else {
+                    uday = uday - 1;
+                }
+            } else {
+                uhour = uhour - 9;
+            }
+            if ( minute < 10 ) minute = "0" + minute;
+            if ( second < 10 ) second = "0" + second;
+            // if (jpnyear = 1) jpnyear = "元";
+            function distime(){
+                document.getElementById('timeJ').innerHTML = year + " (R" + jpnyear + ")  / " + month + " / " + day + " , " + hour + " : " + minute + " : " + second + " JST";
+                document.getElementById('timeU').innerHTML = uyear + "/" + umonth + "/" + uday + " , " + uhour + ":" + minute + ":" + second + " UTC";
+            }
+            distime();
+        }
+        function start() {
+            setInterval("updateClock();", 150);
+            updateClock();
+        }
+        function showref() {
+            document.getElementById('ref'),innerHTML = "";
+        }
+        function keyAct(){
+            var inputNum = document.getElementById('continue').value;
+            // alert(event.keyCode);
+            if (event.keyCode/*x*/ === 13 || event.keyCode/*x*/ === 32 || event.keyCode/*x*/ === 38){
+                // キーはEnter, Space, up
+                increase();
+            } else if (event.keyCode/*x*/ === 40 || event.keyCode/*x*/ === 189 || event.keyCode/*x*/ === 68){
+                // キーは下矢印, -, d
+                decrease();
+            } else if (event.keyCode/*x*/ === 67){
+                // キーはc
+                resetClear();
+            } else if (event.keyCode === 18 && inputNum === "orenai2019") {
+                function cl(){
+                    document.getElementById("continue").value = "";
+                    st.removeItem('auto');
+                    st.removeItem('manual');
+                }
+                setTimeout(function() {cl();window.alert("処理は実行されました。\nローカルストレージの値は消去されました。");}, 1000);
+            } else if (inputNum === "orenai2019" && event.keyCode !== 18){
+                window.alert("鍵キーが確認できなかったか、不正な操作のため、処理を中断しました。")
+            }
+        }
+        function re(x){
+            if (x === 0){
+                keyAct2();
+            } else {
+                keyAct();
+            }
+        }
+        function autosave(x){
+            var now = new Date();
+            var nowmin = now.getMinutes();
+            var nowsec = now.getSeconds();
+            if ((nowmin % 15) === 0 || nowsec === 0){
+                var now = new Date();
+                var hour = now.getHours();
+                // var uhour = now.getHours();
+                var minute = now.getMinutes();
+                var second = now.getSeconds();
+                var year = now.getFullYear();
+                // var uyear = now.getFullYear();
+                var month = now.getMonth() + 1;
+                // var umonth = now.getMonth() + 1;
+                var day = now.getDate();
+                // var uday = now.getDate();
+                // var jpnyear = year - 2018;
+                if ( hour < 10 ) hour = "0" + hour;
+                /*if ((uhour - 9) <= 0){
+                    uhour = uhour + 24 - 9;
+                    if ((uday - 1) <= 0){
+                        if ((umonth - 1) <= 0){
+                            uyear = uyear - 1;
+                        } else {
+                            umonth = umonth - 1;
+                        }
+                    } else {
+                        uday = uday - 1;
+                    }
+                } else {
+                    uhour = uhour - 9;
+                }*/
+                if ( minute < 10 ) minute = "0" + minute;
+                if ( second < 10 ) second = "0" + second;
+                var d = year + "/"+ month + "/" + day + " " + hour + ":" + minute + ":" + second + " JST";
+                var keyVal = d;
+                var valVal = count;
+                // var timeVal = new Date();
+                // var valList = new Array();
+                // valList.push(timeVal, valVal)
+                st.setItem(keyVal, valVal);
+            }
+            if (x === 1){
+                var keyVal = document.getElementById('timeJ').value;
+                var valVal = count;
+                st.setItem(keyVal, valVal);
+            }
+        }
+        function check2(x, y){
+            var ckls001 = x;
+            var ansls1 = y;
+            for (i=0;i<ansls1.length;i++){
+                if (ckls001[i] !== ansls1[i]){
+                    return false;
+                    break;
+                }
+                if (i === (ansls1.length - 1) && ckls001[i] === ansls1[i]){
+                    return true;
+                }
+            }
+        }
+        function checkdo(){
+            var pw = window.prompt("本当に削除しますか？\n削除する場合はパスワードを入力してください:");
+            var lskc = [];
+            var whilect = 0;
+            var ansls = [83, 69, 83, 83, 65, 16, 84, 65, 75, 85, 77, 65, 50, 48, 49, 56, 16, 86, 17, 13];
+            var checker = 0;
+            function sum(x){
+                sumans = 0;
+                for (i=0;i<x.length;i++){
+                    sumans += x[i];
+                }
+                return sumans;
+            }
+            if (pw === "keyaki_Sai"){
+                //パスワード正答時
+                // function lastck(){if (set() === true){lsClearAll();} else {window.alert("パスワードが確認できませんでした。処理を中断します。")}}
+                // window.alert(ansls);
+                // window.alert(lskc);
+                // lsClearAll();
+                setTimeout(function lastck(){if (set() === true/* && check2(keyAct2(ansls), ansls) === true*/){lsClearAll();} else {window.alert("パスワードが確認できませんでした。処理を中断します。")}}, 10000);
+            } else {
+                window.alert("パスワードが違います。リトライしてください。");
+            }
+        }
+        function keyAct2(){
+            if (event.keyCode === 18){
+                st.clear();
+                setTimeout(function() {window.alert("処理は実行されました。\nローカルストレージの値は消去されました。");}, 1000);
+            } else {
+                window.alert("キーが確認できないため、処理を中断しました。")
+            }
+        }
+        function lsClearAll(){
+            ck = window.prompt("本当に実行しますか？\n実行する場合は0を入力してください。");
+            if (ck === "0"){
+                var sel = window.confirm("処理を実行します。");
+                if (sel === true){
+                    var lsel = window.confirm("ローカルストレージのクリアをこの端末に許可しますか？");
+                    if (lsel === true){
+                        var gets = document.getElementById("continue").value;
+                        document.getElementById("continue").value = "鍵キーを入力してください。"
+                        setTimeout(function() {document.getElementById("continue").value = gets}, 3000);
+                    } else {
+                        window.alert("権限がないため、処理を終了しました。");
+                    }
+                    
+                    
+                } else {
+                    window.alert("処理は中断されました。");
+                }
+                // st.clear();
+                // setTimeout(function() {window.alert("処理は実行されました。\nローカルストレージの値は消去されました。");}, 1000);
+            } else {
+                window.alert("処理は中断されました。");
+            }
+        }
+        function checkls() {
+            var st = localStorage;
+            window.alert("length: " + st.length);
+            var lsst;
+            for (i=0;i<st.length;i++){
+                var key = st.key(i);
+                var val = st.getItem(key);
+                console.log(key, val);
+                window.alert(key + "\n" + val);
+            }
+        }
+    </script-->
+</head>
+<body class="body" onkeydown="re(1)" onload="start()">
+    <header class="header-nav">
+        <nav>
+            <ul class="nav-ul">
+                <li class=”current”><a href=home.html>Home</a></li>
+                <li><a href=rvs.html>rvs_mpge</a></li>
+                <li><a href=search.html>search(Internet)</a></li>
+                <li><a href=212.html>212</a></li>
+                <li><a href=snk.html>snake</a></li>
+                <li><a href=roter.html>rot13.com</a></li>
+                <li><a href=counter.html>counter</a></li>
+                <li><a href=flashCalculate.html>FlashCalc.</a></li>
+                <li><a href=slot.html>Slot</a></li>
+                <!--<li><a href=></a></li>-->
+            </ul>
+        </nav>
+    </header>
+    <h1 class="h1-title">カウンター</h1>
+    <h1 class="h1-cnum" id="c-num">0</h1>
+    <input type="button" class="reset" name="clear" id="clear" value="リセット" onclick="resetClear()">
+    <div class="div-btindec">
+        <input type="button" name="" class="bt-inc" value="カウントを増やす" onclick="increase()">
+        <input type="button" name="" class="bt-dec" value="カウントを減らす" onclick="decrease()">
+    </div>
+    <hr color="#000000" size="1" width="100%" noshade>
+    <p class="p-msg">続きからカウント</p>
+    <div class="div-cont">
+        <input type="text" class="incont" name="continue" id="continue" placeholder="0以上の数値を入力...">
+        <input type="button" class="setcont" name="setcont" id="setcont" value="セット" onclick="set()">
+    </div>
+    <hr color="#000000" size="1" width="100%" noshade>
+    <p class="p-msg">ローカルストレージ</p>
+    <input type="button" name="" class="bt-lss" value="ローカルストレージへ現在の値を保存" onclick="save()" id="save">
+    <div class="div-btls">
+        <input type="button" name="" class="bt-lsr" value="最新値をローカルストレージから読み込み" onclick="read('#auto')"  id="read">
+        <input type="button" name="" class="bt-lsr" value="最終保存値をローカルストレージから読み込み" onclick="read('#manual')"  id="read">
+    </div>
+    <hr class="hr-ds" color="#000000" size="1" width="100%" noshade>
+    <div class="div-btlsu">
+        <input type="button" name="" class="bt-lsscl" value="clear LS" onclick="checkdo()" id="clear">
+        <input type="button" name="" class="bt-lsscl" value="show LS" onclick="checkls()" id="show">
+    </div>
+    <!--br-->
+    <!--hr color="#000000" size="1" width="100%" noshade-->
+    <!--p class="p-msg">サーバー</p>
+    <div class="div-btls">
+        <input type="button" name="" class="bt-lss" value="サーバーへ現在の値を保存" onclick="save()"  id="save">
+        <input type="button" name="" class="bt-lsr" value="最新値をサーバーから読み込み" onclick="read()"  id="read">
+    </div-->
+    <hr color="#000000" size="2" width="100%" noshade>
+    <h5 class="h5-subtitle">現在時刻</h5>
+    <p class="p-timeJ" id="timeJ"></p>
+    <p class="p-timeU" id="timeU"></p>
+    <hr color="#000000" size="1" width="100%" noshade>
+    <!--h5 class="h5-subtitle">集客率グラフ(起動から30分おき)</h5>
+    <canvas id="mycanvas" height="530" width="100%"></canvas>
+    <hr color="#aaaaaa" size="1" width="100%" noshade-->
+    <p class="cpr">made by Kaida Jyouma, <a href="https://www.one-tab.com/page/VszZPHKQQhq7GD7eCq6zvw" target="_blank">reference is here.</a></p>
+</body>
+</html>
