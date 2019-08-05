@@ -256,6 +256,6 @@ function checkls() {
             window.alert(key + "\n" + val);
         }
     }*/
-    window.alert("#auto", st.getItem("#auto"));
-    window.alert("#manual", st.getItem("#manual"));
+    window.alert("#auto" + "\n" + st.getItem("#auto"));
+    window.alert("#manual" + "\n" + st.getItem("#manual"));
 }
