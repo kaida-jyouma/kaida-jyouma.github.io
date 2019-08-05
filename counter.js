@@ -252,7 +252,7 @@ function checkls() {
     for (i=0;i<st.length;i++){
         var key = st.key(i);
         var val = st.getItem(key);
-        if (key[0] === "#"){
+        if (st.key[i][0] === "#"){
             console.log(key, val);
             window.alert(key + "\n" + val);
         }
