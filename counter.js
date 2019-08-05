@@ -247,8 +247,7 @@ function lsClearAll(){
 }
 function checkls() {
     var st = localStorage;
-    window.alert("length: " + st.length);
-    var lsst;
+//     window.alert("length: " + st.length);
     /*for (i=0;i<st.length;i++){
         var key = st.key(i);
         var val = st.getItem(key);
