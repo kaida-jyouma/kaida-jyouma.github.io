@@ -249,12 +249,14 @@ function checkls() {
     var st = localStorage;
     window.alert("length: " + st.length);
     var lsst;
-    for (i=0;i<st.length;i++){
+    /*for (i=0;i<st.length;i++){
         var key = st.key(i);
         var val = st.getItem(key);
         if (st.key[i][0] === "#"){
             console.log(key, val);
             window.alert(key + "\n" + val);
         }
-    }
+    }*/
+    window.alert("#auto", st.getItem("#auto"));
+    window.alert("#manual", st.getItem("#manual"));
 }
