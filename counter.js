@@ -29,7 +29,7 @@ function set() {
         document.getElementById('c-num').innerHTML = inputNum;
         st.setItem("#auto", count);
         document.getElementById('continue').value = "";
-    } else if (inputNum === "orenai2019") {
+    } else if (inputNum === "github") {
         return true;
     } else {
         window.alert("You cannot enter number under zero...");
@@ -118,14 +118,14 @@ function keyAct(){
     } else if (event.keyCode/*x*/ === 67){
         // キーはc
         resetClear();
-    } else if (event.keyCode === 18 && inputNum === "orenai2019") {
+    } else if (event.keyCode === 18 && inputNum === "github") {
         function cl(){
             document.getElementById("continue").value = "";
             st.removeItem('#auto');
             st.removeItem('#manual');
         }
         setTimeout(function() {cl();window.alert("処理は実行されました。\nローカルストレージの値は消去されました。");}, 1000);
-    } else if (inputNum === "orenai2019" && event.keyCode !== 18){
+    } else if (inputNum === "github" && event.keyCode !== 18){
         window.alert("鍵キーが確認できなかったか、不正な操作のため、処理を中断しました。")
     }
 }
@@ -210,12 +210,8 @@ function checkdo(){
         }
         return sumans;
     }
-    if (pw === "keyaki_Sai"){
+    if (pw === "pass.github.io"){
         //パスワード正答時
-        // function lastck(){if (set() === true){lsClearAll();} else {window.alert("パスワードが確認できませんでした。処理を中断します。")}}
-        // window.alert(ansls);
-        // window.alert(lskc);
-        // lsClearAll();
         setTimeout(function lastck(){if (set() === true/* && check2(keyAct2(ansls), ansls) === true*/){lsClearAll();} else {window.alert("パスワードが確認できませんでした。処理を中断します。")}}, 10000);
     } else {
         window.alert("パスワードが違います。リトライしてください。");
@@ -242,13 +238,9 @@ function lsClearAll(){
             } else {
                 window.alert("権限がないため、処理を終了しました。");
             }
-            
-            
         } else {
             window.alert("処理は中断されました。");
         }
-        // st.clear();
-        // setTimeout(function() {window.alert("処理は実行されました。\nローカルストレージの値は消去されました。");}, 1000);
     } else {
         window.alert("処理は中断されました。");
     }
