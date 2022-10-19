@@ -106,6 +106,7 @@ function start() {
         st.setItem("#auto", 0)
     }
     document.getElementById('c-num').innerHTML = st.getItem("#auto");
+    count = st.getItem("#auto")
 }
 function showref() {
     document.getElementById('ref'),innerHTML = "";
