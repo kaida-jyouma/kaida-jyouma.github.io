@@ -102,6 +102,10 @@ function updateClock() {
 function start() {
     setInterval("updateClock();", 150);
     updateClock();
+    if (st.getItem("#auto") == null){
+        st.setItem("#auto", 0)
+    }
+    document.getElementById('c-num').innerHTML = st.getItem("#auto");
 }
 function showref() {
     document.getElementById('ref'),innerHTML = "";
@@ -250,7 +254,7 @@ function checkls() {
 //     window.alert("length: " + st.length);
     /*for (i=0;i<st.length;i++){
         var key = st.key(i);
-        var val = st.getItem(key);
+        var val = (key);
         if (st.key[i][0] === "#"){
             console.log(key, val);
             window.alert(key + "\n" + val);
